@@ -15,6 +15,45 @@ int contarVocales(string texto) {
     return contador;
 }
 
+int contarConsonantes(string texto) {
+    int contador = 0;
+    for (int i = 0; i < texto.size(); i++) {
+        char c = texto[i];
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+            if (!(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+                  c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')) {
+                contador++;
+            }
+        }
+    }
+    return contador;
+}
+
+int contarNoAlfabeticos(string texto) {
+    int contador = 0;
+    for (int i = 0; i < texto.size(); i++) {
+        char c = texto[i];
+        if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))) {
+            contador++;
+        }
+    }
+    return contador;
+}
+
+void ejemplo2() {
+    string palabra;
+    cout << "Ingrese una palabra: ";
+    cin >> palabra;
+
+    cout << "Vocales: " << contarVocales(palabra) << endl;
+    cout << "Consonantes: " << contarConsonantes(palabra) << endl;
+    cout << "No alfabeticos: " << contarNoAlfabeticos(palabra) << endl;
+}
+
+int main() {
+    ejemplo2();
+    return 0;
+}
 
 
 
