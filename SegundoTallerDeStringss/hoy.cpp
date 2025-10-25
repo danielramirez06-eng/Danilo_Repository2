@@ -20,7 +20,7 @@ int contarConsonantes(string texto) {
     for (int i = 0; i < texto.size(); i++) {
         char c = texto[i];
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
-            if (!(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
+             if (!(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
                   c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')) {
                 contador++;
             }
@@ -28,7 +28,6 @@ int contarConsonantes(string texto) {
     }
     return contador;
 }
-
 int contarNoAlfabeticos(string texto) {
     int contador = 0;
     for (int i = 0; i < texto.size(); i++) {
