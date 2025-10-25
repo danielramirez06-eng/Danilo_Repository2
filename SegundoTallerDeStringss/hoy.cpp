@@ -1,6 +1,118 @@
 #include <iostream>
 using namespace std;
 
+//Punto #5
+
+bool tieneDigito(string codigoAcceso) {
+    for (int i = 0; i < codigoAcceso.size(); i++) {
+        if (codigoAcceso[i] >= '0' && codigoAcceso[i] <= '9') {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+bool tieneSimboloEspecial(string codigoAcceso) {
+   for (int i = 0; i < codigoAcceso.size(); i++){
+    if (codigoAcceso[i] == '@' || codigoAcceso[i] == '#' ||
+            codigoAcceso[i] == '$' || codigoAcceso[i] == '%')
+    {
+        return true;
+    }
+    
+   }
+   return false;
+   
+}
+
+bool sinEspacios(string codigoAcceso){
+    for (int i = 0; i < codigoAcceso.size(); i++)
+    {
+
+        if (codigoAcceso[i] == ' ')
+        {
+            return false;
+        }
+        
+    }
+    return true;
+}
+
+
+void ejemplo5 (){
+    string codigo;
+    cout << "Ingresa un codigo de acceso:";
+    cin >> codigo;
+
+    if (tieneDigito(codigo) && sinEspacios(codigo) && tieneSimboloEspecial(codigo))
+
+    {
+        cout << " Codigo aceptado " << endl;
+    }
+    else
+    {
+        cout << "Codigo no aceptado" << endl;
+
+    }
+    
+
+}
+
+
+
+//Punto #4
+
+
+int contarPalabras(string frase) {
+    int contador = 0;
+    for (int i = 0; i < frase.size(); i++) {
+        if (frase[i] == ' ') {
+            contador++;
+        }
+    }
+    return contador + 1; 
+}
+
+
+int contarPuntuacion(string frase) {
+    int contador = 0;
+    for (int i = 0; i < frase.size(); i++) {
+        if (frase[i] == '.' || frase[i] == ',' || frase[i] == ';' ||
+            frase[i] == ':' || frase[i] == '!' || frase[i] == '?') {
+            contador++;
+        }
+    }
+    return contador;
+}
+
+
+bool terminaEnPunto(string frase) {
+    if (frase[frase.size() - 1] == '.') {
+        return true;
+    } 
+    else 
+    {
+        return false;
+    }
+}
+
+
+void ejemplo4() {
+    string frase;
+    cout << "Ingrese una frase: ";
+    getline(cin, frase);
+
+
+    cout << "Cantidad de palabras: " << contarPalabras(frase) << endl;
+    cout << "Cantidad de signos de puntuacion: " << contarPuntuacion(frase) << endl;
+
+    if (terminaEnPunto(frase)) {
+        cout << "La frase termina en punto." << endl;
+    } else {
+        cout << "La frase no termina en punto." << endl;
+    }
+}
 
 //Punto #3
 
@@ -166,6 +278,9 @@ void problema1() {
 int main() {
     //problema1();
     //ejemplo2();
-    ejemplo3();
+    //ejemplo3();
+    //ejemplo4();
+      ejemplo5();
+
     return 0;
 }
