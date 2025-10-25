@@ -50,25 +50,6 @@ void ejemplo2() {
     cout << "No alfabeticos: " << contarNoAlfabeticos(palabra) << endl;
 }
 
-int main() {
-    ejemplo2();
-    return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -104,6 +85,7 @@ void problema1() {
 }
 
 int main() {
-    problema1();
+    //problema1();
+    ejemplo2();
     return 0;
 }
