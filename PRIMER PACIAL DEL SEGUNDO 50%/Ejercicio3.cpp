@@ -1,39 +1,39 @@
-#include <iostream>
-
+##include <iostream>
 using namespace std;
 
-void citys() {
+void MultasCiudad() {
 
-    string carPlates[6] = {"ABC123", "XYZ789", "LMN456", "JKL321", "QWE654", "TYU999"};
-    float fines[6] = {250000, 180000, 300000, 450000, 200000, 120000};
-    string citys[6] = {"Tunja", "Bogotá", "Yopal", "Medellín", "Cali", "Yopal"};
+    string placas[] = {"ABC123", "XYZ789", "LMN456", "JKL321", "QWE654", "TYU999"};
+    float multas[] = {250000, 180000, 300000, 450000, 200000, 120000};
+    string ciudades[] = {"Tunja", "Bogotá", "Yopal", "Medellín", "Cali", "Yopal"};
 
-    string searchedCity;
+    int cantidad = sizeof(ciudades) / sizeof(ciudades[0]);  // ← aquí usamos sizeof
+    string buscar;
     float total = 0;
-    bool found = false;
+    bool existe = false;
 
     cout << "Ingrese la ciudad: ";
-    getline(cin, searchedCity);
+    getline(cin, buscar);
 
-    cout << endl;
-    cout << "Multas registradas en " << searchedCity << ":" << endl;
+    cout << endl << "Multas registradas en " << buscar << ":" << endl;
 
-    for (int i = 0; i < 6; i++) {
-        if (citys[i] == searchedCity) {
-            cout << carPlates[i] << " - $" << fines[i] << endl;
-            total += fines[i];
-            found = true;
+    for (int i = 0; i < cantidad; i++) {
+        if (ciudades[i] == buscar) {
+            cout << placas[i] << " - $" << multas[i] << endl;
+            total += multas[i];
+            existe = true;
         }
     }
 
-    if (found) {
-        cout << "Total de multas en " << searchedCity << ": $" << total << endl;
+    if (existe) {
+        cout << "Total de multas en " << buscar << ": $" << total << endl;
     } else {
-        cout << "No hay multas registradas en " << searchedCity << "." << endl;
+        cout << "No hay multas registradas en " << buscar << "." << endl;
     }
 }
 
 int main() {
-    citys();
+    MultasCiudad();
     return 0;
 }
+
