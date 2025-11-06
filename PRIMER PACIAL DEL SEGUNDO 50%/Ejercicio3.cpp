@@ -7,7 +7,7 @@ void MultasCiudad() {
     float multas[] = {250000, 180000, 300000, 450000, 200000, 120000};
     string ciudades[] = {"Tunja", "Bogotá", "Yopal", "Medellín", "Cali", "Yopal"};
 
-    int cantidad = sizeof(ciudades) / sizeof(ciudades[0]);  // ← aquí usamos sizeof
+    int cantidad = sizeof(ciudades) / sizeof(ciudades[0]); 
     string buscar;
     float total = 0;
     bool existe = false;
