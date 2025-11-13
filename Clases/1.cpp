@@ -5,8 +5,8 @@ class SalesManager {
 public:
     bool continueRunning = true;
     int size = 0;
-    string* salesNames = 0;
-    int* salesValues = 0;
+    string* salesNames = nullptr;
+    int* salesValues = nullptr;
 
     // FUNCIÓN PRINCIPAL
     void run() {
