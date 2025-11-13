@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+//  MENÚ PRINCIPAL 
+// Muestra las opciones disponibles y devuelve la opción elegida por el usuario.
 int getUserAction() {
     int userAction;
     cout << "-----------------------------" << endl;
@@ -18,16 +20,20 @@ int getUserAction() {
     return userAction;
 }
 
+//  FUNCIÓN PARA REGISTRAR O REINICIAR LAS VENTAS 
 void getNewSales(string*& salesNames, int*& salesValues, int& size) {
     cout << "Ingrese el numero de ventas a registrar: ";
     cin >> size;
 
+    // Se liberan los arreglos anteriores para evitar fugas de memoria.
     delete[] salesNames;
     delete[] salesValues;
 
+    // Se crean nuevos arreglos con el tamaño indicado por el usuario.
     salesNames = new string[size];
     salesValues = new int[size];
 
+    // Se llenan los arreglos con los datos de las ventas.
     for (int i = 0; i < size; i++) {
         cout << "Ingrese el nombre de la venta #" << i + 1 << ": ";
         cin >> salesNames[i];
@@ -36,6 +42,7 @@ void getNewSales(string*& salesNames, int*& salesValues, int& size) {
     }
 }
 
+//  MOSTRAR TODAS LAS VENTAS REGISTRADAS 
 void printSales(string salesNames[], int salesValues[], int size) {
     if (size == 0) {
         cout << "No hay ventas registradas." << endl;
@@ -49,6 +56,7 @@ void printSales(string salesNames[], int salesValues[], int size) {
     }
 }
 
+//  MODIFICAR UNA VENTA EXISTENTE 
 void modifySale(string salesNames[], int salesValues[], int size) {
     if (size == 0) {
         cout << "No hay ventas registradas." << endl;
@@ -60,6 +68,8 @@ void modifySale(string salesNames[], int salesValues[], int size) {
     cin >> name;
 
     bool found = false;
+
+    // Se busca la venta por su nombre.
     for (int i = 0; i < size; i++) {
         if (salesNames[i] == name) {
             cout << "Venta encontrada. Valor actual: " << salesValues[i] << endl;
@@ -70,11 +80,13 @@ void modifySale(string salesNames[], int salesValues[], int size) {
             break;
         }
     }
+
     if (!found) {
         cout << "No se encontro una venta con ese nombre." << endl;
     }
 }
 
+//  BUSCAR UNA VENTA POR NOMBRE 
 void findSale(string salesNames[], int salesValues[], int size) {
     if (size == 0) {
         cout << "No hay ventas registradas." << endl;
@@ -86,6 +98,8 @@ void findSale(string salesNames[], int salesValues[], int size) {
     cin >> name;
 
     bool found = false;
+
+    // Se recorre el arreglo buscando coincidencia exacta del nombre.
     for (int i = 0; i < size; i++) {
         if (salesNames[i] == name) {
             cout << "Venta encontrada en la posicion " << i + 1 
@@ -94,11 +108,13 @@ void findSale(string salesNames[], int salesValues[], int size) {
             break;
         }
     }
+
     if (!found) {
         cout << "No se encontro una venta con ese nombre." << endl;
     }
 }
 
+//  MOSTRAR VENTAS DENTRO DE UN RANGO DE PRECIOS 
 void salesInRange(string salesNames[], int salesValues[], int size) {
     if (size == 0) {
         cout << "No hay ventas registradas." << endl;
@@ -113,6 +129,8 @@ void salesInRange(string salesNames[], int salesValues[], int size) {
 
     cout << "Ventas en el rango de " << min << " a " << max << ":" << endl;
     bool found = false;
+
+    // Se listan las ventas cuyo valor esté entre el mínimo y máximo ingresado.
     for (int i = 0; i < size; i++) {
         if (salesValues[i] >= min && salesValues[i] <= max) {
             cout << "Venta: " << salesNames[i] << " -> Valor: " << salesValues[i] << endl;
@@ -125,6 +143,7 @@ void salesInRange(string salesNames[], int salesValues[], int size) {
     }
 }
 
+//  CALCULAR EL TOTAL DE TODAS LAS VENTAS 
 void calculateTotal(int salesValues[], int size) {
     if (size == 0) {
         cout << "No hay ventas registradas." << endl;
@@ -132,21 +151,27 @@ void calculateTotal(int salesValues[], int size) {
     }
 
     int total = 0;
+
+    // Se suman todos los valores de las ventas.
     for (int i = 0; i < size; i++) {
         total += salesValues[i];
     }
     cout << "El total de las ventas registradas es: " << total << endl;
 }
 
+//  FUNCIÓN PRINCIPAL DEL PROGRAMA
+// Controla el flujo de ejecución del menú y las operaciones.
 void run() {
     bool continueRunning = true;
     int size = 0;
     string* salesNames = nullptr;
     int* salesValues = nullptr;
 
+    // Bucle principal del programa.
     while (continueRunning) {
         int userAction = getUserAction();
 
+        // Se ejecuta la función según la opción elegida.
         if (userAction == 1) {
             getNewSales(salesNames, salesValues, size);
         } else if (userAction == 2) {
@@ -160,6 +185,7 @@ void run() {
         } else if (userAction == 6) {
             calculateTotal(salesValues, size);
         } else if (userAction == 7) {
+            // Se liberan los arreglos y termina el programa.
             delete[] salesNames;
             delete[] salesValues;
             continueRunning = false;
@@ -169,7 +195,8 @@ void run() {
     }
 }
 
+//  PUNTO DE ENTRADA
 int main() {
-    run();
+    run();  // Llama a la función principal que gestiona todo el sistema.
     return 0;
 }
